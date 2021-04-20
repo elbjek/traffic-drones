@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,700;1,400&family=Roboto:wght@300;400;500;700;900&display=swap');
+
+$purple:#6308F7;
+$white: #FFFFFF;
+$white-darker:#F6F9FC;
+$green: #3CC13B;
+$red: #f03738;
+$orange: #f3bb1c;
+
+//
+$background-color-darken: $white-darker;
+$background--color-white: $white;
+$text--color-accent: $purple;
+
+$color--accent-heavy: $red;
+$color--accent-moderate: $orange;
+$color--accent-light:$green;
+
+
+body {
+    background-color: $background-color-darken !important;
+    font-size: 14px !important;
+    font-family: 'Roboto', sans-serif !important;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
+}
+
+.button--action {
+    padding: 12px 22px 12px 22px;
+    display: block;
+    border-radius: 8px;
+    margin-top: 6px;
+    font-weight: 700;
+}
+
+.button--action-purple {
+    border: 2px solid $purple;
+    background-color: $background--color-white;
+    color: $text--color-accent;
+    transition: .2s ease-in-out;
+    &:hover {
+        background-color: $purple;
+        color: $white;
+        text-decoration: none;
+    }
+}
+.heading{
+    background-color:$background--color-white;
+    margin-bottom:35px;
+    h1 {
+        font-size: 16px;
+        font-weight: 700;
+        text-align: left;
+        margin: 0;
+        padding: 18px 0px;
+    }
+}
+
+@media screen and (min-width:1200px) {
+    .container {
+        max-width: 1440px !important;
+    }
+}

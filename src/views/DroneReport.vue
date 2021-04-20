@@ -7,8 +7,15 @@
     </div>
     <div class="container">
       <div class="drone-report-heading">
-        <h1>{{ item.name }}</h1>
-        <img :src="item.image" alt="" />
+        <h2>{{ item.name }}</h2>
+        <div class="img">
+          <img v-if="item.image" :src="item.image" alt="" />
+        </div>
+        <router-link
+          class="button--action button--action-purple"
+          :to="{ path: '/'}">
+            Back
+          </router-link>
       </div>
       <table class="table">
         <thead>
@@ -18,9 +25,9 @@
           <th scope="col">Longitude</th>
           <th scope="col">Traffic</th>
         </thead>
-        <tbody>
+        <tbody v-if="item.data">
           <tr v-for="d in item.data" :key="d.id">
-            <td>
+            <td v-on:click="sortByTime()">
               {{
                 new Date(d.time).toLocaleString("en-EU", {
                   hour: "numeric",
@@ -29,7 +36,7 @@
                 })
               }}
             </td>
-            <td>{{ d.speed }}</td>
+            <td v-on:click="sortBySpeed()">{{ d.speed }}</td>
             <td>{{ d.latitude }}</td>
             <td>{{ d.longitude }}</td>
             <td :class="'traffic--mark traffic--mark-' + d.traffic_conditions">
@@ -38,6 +45,7 @@
           </tr>
         </tbody>
       </table>
+      <div class="" v-if="!isEmpty">No current data to display</div>
     </div>
   </div>
 </template>
@@ -51,28 +59,38 @@ export default {
       item: {},
       data: [],
       drones: [],
-      time: null,
+      isEmpty: false,
     };
   },
-  computed: {},
+  methods: {
+    sortByTime() {
+      this.item.data.sort((a, b) => new Date(b.time) - new Date(a.time));
+    },
+    sortBySpeed() {
+      this.item.data.sort((a, b) => b.speed - a.speed);
+    },
+  },
   mounted() {
     this.axios
       .all([this.axios.get('/data.json'), this.axios.get('/drones.json')])
       .then(
         this.axios.spread((res1, res2) => {
-          // console.log(res1, res2);
           this.data = res1.data.reports;
           this.drones = res2.data.drones;
-
           const Arr = [];
           this.data.forEach((element) => {
             if (element.drone_id === Math.floor(this.$route.params.id)) {
+              this.isEmpty = false;
               this.drones.forEach((el) => {
+                console.log(el, element);
                 if (el.id === element.drone_id) {
+                  this.isEmpty = false;
                   Arr.push(element);
                   this.item = { name: el.name, image: el.image, data: Arr };
                 }
               });
+            } else {
+              this.isEmpty = true;
             }
           });
         }),
@@ -85,22 +103,40 @@ export default {
   display: flex;
   align-items: center;
   margin-bottom: 20px;
-  h1 {
+
+  h2 {
     font-size: 20px;
     text-transform: uppercase;
     text-align: left;
-    font-weight: 800;
-    color: $purple;
+    font-weight: 900;
+    color: $text--color-accent;
+    margin-bottom:0;
   }
-  img {
+
+  .img {
     max-height: 45px;
-    border-radius: 5px;
+    max-width: 80px;
+    background-color: rgba(#212529, 0.2);
     margin-left: 20px;
+    border-radius: 5px;
+
+    img {
+      width: 100%;
+      height: 100%;
+      border-radius: 5px;
+      }
+    }
+
+  .button--action {
+    padding-top:10px;
+    padding-bottom: 10px;
+    margin:auto 0 auto auto;
   }
 }
 .table {
-  background-color: $white;
+  background-color: $background--color-white;
   box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
+
   th,
   td {
     border-bottom: none !important;
@@ -108,6 +144,7 @@ export default {
     text-align: left;
     font-family: "Lato", "sans-serif";
   }
+
   thead,
   tbody tr {
     border-bottom: 1px solid #f4f4f4;
@@ -127,15 +164,19 @@ export default {
       cursor:pointer;
     }
   }
+
   td {
     padding: 14px !important;
     vertical-align: middle !important;
+
     @media screen and (max-width:768px) {
       padding:5px !important;
     }
+
     &:first-of-type {
       text-transform: lowercase;
     }
+
     &.traffic--mark {
       span {
         padding: 4px 8px 4px 8px;
@@ -145,28 +186,30 @@ export default {
         border-style: solid;
         border-radius: 4px;
       }
+
       span:first-letter {
         text-transform: uppercase;
       }
-      &-MODERATE {
-        span {
-          border-color: rgba(#f3bb1c, 100%);
-          background-color: rgba(#f3bb1c, 0.2);
-          color: #f3bb1c;
-        }
-      }
+
       &-LIGHT {
         span {
-          border-color: rgba(#3CC13B, 100%);
-          background-color: rgba(#3CC13B, 0.2);
-          color: #3CC13B;
+          border-color: rgba($color--accent-light, 100%);
+          background-color: rgba($color--accent-light, 0.2);
+          color: $color--accent-light;
+        }
+      }
+      &-MODERATE {
+        span {
+          border-color: rgba($color--accent-moderate, 100%);
+          background-color: rgba($color--accent-moderate, 0.2);
+          color: $color--accent-moderate;
         }
       }
       &-HEAVY {
         span {
-          border-color: rgba(#f03738, 100%);
-          background-color: rgba(#f03738, 0.2);
-          color: #f03738;
+          border-color: rgba($color--accent-heavy, 100%);
+          background-color: rgba($color--accent-heavy, 0.2);
+          color: $color--accent-heavy;
         }
       }
     }

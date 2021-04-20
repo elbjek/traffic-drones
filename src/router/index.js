@@ -17,6 +17,10 @@ const routes = [
     component: DroneReport,
     props: true,
   },
+  {
+    path: '/reports',
+    redirect: '/',
+  },
 ];
 
 const router = new VueRouter({

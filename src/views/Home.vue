@@ -20,7 +20,6 @@
 </template>
 
 <script>
-// @ is an alias to /src
 import SingleItem from '../components/SingleItem.vue';
 
 export default {
@@ -38,14 +37,5 @@ export default {
       this.drones = response.data.drones;
     });
   },
-  methods: {
-    send(name, image) {
-      this.$parent.$emit('sendData', name, image);
-    },
-  },
 };
 </script>
-
-<style lang="scss">
-
-</style>
