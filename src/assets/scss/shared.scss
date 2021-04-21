@@ -6,7 +6,7 @@ $green: #3CC13B;
 $red: #f03738;
 $orange: #f3bb1c;
 $pink: #ffa7d6;
-$black: #000000;
+$black: #1E2833;
 
 $background-color-darken: $white-darker;
 $background--color-white: $white;
@@ -29,9 +29,10 @@ body {
     font-family: 'Roboto', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    text-align: center;
+    text-align: left;
     color: $black;
     height: 100%;
+    font-weight: normal;
 }
 
 ul{

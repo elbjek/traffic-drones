@@ -29,9 +29,9 @@
               <div class="col-sm-4">
                 <p>Follow us</p>
                 <ul class="footer-social-media">
-                  <li><a href="#">f</a></li>
-                  <li><a href="#">in</a></li>
-                  <li><a href="#">ln</a></li>
+                  <li><a href="https://facebook.com"><font-awesome-icon :icon="['fab', 'facebook-f']" /></a></li>
+                  <li><a href="https://twitter.com"><font-awesome-icon :icon="['fab', 'twitter']" /></a></li>
+                  <li><a href="https://instagram.com"><font-awesome-icon :icon="['fab', 'instagram']" /></a></li>
                 </ul>
               </div>
             </div>
@@ -79,6 +79,7 @@ footer {
           margin-left: 20px;
           max-width: 50%;
           font-size: 12.5px;
+
           @media screen and (max-width: 575px) {
             max-width: 100%;
             margin-top: 20px;
@@ -123,6 +124,30 @@ footer {
           &.footer-social-media {
             li {
               display: inline-block;
+              a {
+                padding: 0px 10px;
+                border: 1px solid transparent;
+                display: block;
+                border-radius: 30px;
+                &:hover {
+                  border-color: $black;
+                }
+              }
+              &:nth-child(1) {
+                a {
+                  padding:10px 14px;
+                }
+              }
+              &:nth-child(2) {
+                a {
+                  padding: 10px 12px;
+                }
+              }
+              &:nth-child(3) {
+                a {
+                  padding:10px 13px;
+                }
+              }
             }
           }
         }
