@@ -125,28 +125,10 @@ footer {
             li {
               display: inline-block;
               a {
-                padding: 0px 10px;
-                border: 1px solid transparent;
                 display: block;
-                border-radius: 30px;
-                &:hover {
-                  border-color: $black;
-                }
-              }
-              &:nth-child(1) {
-                a {
-                  padding:10px 14px;
-                }
               }
               &:nth-child(2) {
-                a {
-                  padding: 10px 12px;
-                }
-              }
-              &:nth-child(3) {
-                a {
-                  padding:10px 13px;
-                }
+                padding: 0px 10px;
               }
             }
           }
