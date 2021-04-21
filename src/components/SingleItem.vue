@@ -1,7 +1,6 @@
 <template>
   <div class="card">
-    <img  v-if="drone.image" class="card-img-top" :src="drone.image" alt="Card image cap" />
-    <img  v-else src="https://i.stack.imgur.com/y9DpT.jpg'" alt="">
+      <div class="img-placeholder" :style="{ backgroundImage: 'url(' + drone.image + ')' }"></div>
     <div class="card-body">
       <div class="card-info">
         <div class="card-titles">
@@ -44,10 +43,30 @@ export default {
   .card-body {
     padding: 0 1.25rem;
   }
-  img {
-    margin-bottom: 24px;
+  .img-placeholder {
+    min-height: 140px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
+    background-color: #eaeaea;
+    margin-bottom:24px;
+
+    @media screen and (max-width:992px) {
+      min-height:200px;
+    }
+
+    @media screen and (max-width:768px) {
+      min-height:240px;
+    }
+  }
+  img {
+    // margin-bottom: 24px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    // background-color: $background-color-darken;
+    // min-height: 200px;
   }
   .card-info {
     display: flex;
