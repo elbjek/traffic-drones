@@ -1,22 +1,26 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,700;1,400&family=Roboto:wght@300;400;500;700;900&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Lato:wght@400;700;900&family=Roboto:wght@400;500;700;900&display=swap');
 $purple:#6308F7;
 $white: #FFFFFF;
 $white-darker:#F6F9FC;
 $green: #3CC13B;
 $red: #f03738;
 $orange: #f3bb1c;
+$pink: #ffa7d6;
+$black: #000000;
 
-//
 $background-color-darken: $white-darker;
 $background--color-white: $white;
 $text--color-accent: $purple;
+
+$footer--color-accent:$pink;
 
 $color--accent-heavy: $red;
 $color--accent-moderate: $orange;
 $color--accent-light:$green;
 
-
+html,body {
+    height: 100%;
+}
 body {
     background-color: $background-color-darken !important;
     font-size: 14px !important;
@@ -24,7 +28,14 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
-    color: #2c3e50;
+    color: $black;
+}
+
+ul{
+    padding-left: 0;
+    li {
+        list-style-type: none;
+    }
 }
 
 .button--action {
@@ -33,6 +44,7 @@ body {
     border-radius: 8px;
     margin-top: 6px;
     font-weight: 700;
+    text-align: center;
 }
 
 .button--action-purple {
@@ -58,8 +70,8 @@ body {
     }
 }
 
-@media screen and (min-width:1200px) {
-    .container {
-        max-width: 1440px !important;
-    }
-}
+// @media screen and (min-width:1200px) {
+//     .container {
+//         max-width: 1440px !important;
+//     }
+// }

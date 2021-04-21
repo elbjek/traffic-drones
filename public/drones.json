@@ -5,14 +5,14 @@
       "name": "Drone 1",
       "battery": 1200,
       "age": 1,
-      "image": ""
+      "image": "https://www.nysenate.gov/sites/default/files/press-release/main-image/drone.jpg"
     },
     {
       "id": 2,
       "name": "Drone 2",
       "battery": 14500,
       "age": 3,
-      "image": "https://www.nysenate.gov/sites/default/files/press-release/main-image/drone.jpg"
+      "image": ""
     },
     {
       "id": 3,
