@@ -39,7 +39,7 @@ export default {
   border-radius: 15px !important;
   border: none !important;
   box-shadow: 0px 7.896931171417236px 10.529241561889648px 0px #0000000A;
-
+  background-color: $background--color-white;
   .card-body {
     padding: 0 1.25rem;
   }

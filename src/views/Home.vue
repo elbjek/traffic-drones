@@ -1,10 +1,6 @@
 <template>
   <div class='drone-list'>
-    <div class="heading">
-      <div class="container">
-        <h1>Drone List</h1>
-      </div>
-    </div>
+    <Heading title="Drone Report"/>
     <div class='container drones-list-all'>
       <Loader v-if="loading"/>
       <div v-if="error" id="error-block">
@@ -26,12 +22,14 @@
 <script>
 import SingleItem from '../components/SingleItem.vue';
 import Loader from '../components/Loader.vue';
+import Heading from '../components/Heading.vue';
 
 export default {
   name: 'Home',
   components: {
     SingleItem,
     Loader,
+    Heading,
   },
   data() {
     return {

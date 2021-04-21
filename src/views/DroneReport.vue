@@ -1,10 +1,6 @@
 <template>
   <div class="drone-report-wrapper">
-    <div class="heading">
-      <div class="container">
-        <h1>Drone Report</h1>
-      </div>
-    </div>
+    <Heading title="Drone Report"/>
     <div class="container">
       <div class="drone-report-heading">
         <h2>{{ item.name }}</h2>
@@ -62,11 +58,13 @@
 <script>
 /* eslint-disable no-nested-ternary */
 import Loader from '../components/Loader.vue';
+import Heading from '../components/Heading.vue';
 
 export default {
   name: 'Home',
   components: {
     Loader,
+    Heading,
   },
   data() {
     return {
