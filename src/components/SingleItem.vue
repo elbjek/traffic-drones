@@ -43,6 +43,7 @@ export default {
   .card-body {
     padding: 0 1.25rem;
   }
+
   .img-placeholder {
     min-height: 140px;
     background-size: cover;
@@ -61,13 +62,7 @@ export default {
       min-height:240px;
     }
   }
-  img {
-    // margin-bottom: 24px;
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
-    // background-color: $background-color-darken;
-    // min-height: 200px;
-  }
+
   .card-info {
     display: flex;
   }

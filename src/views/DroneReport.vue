@@ -17,7 +17,7 @@
             Back
           </router-link>
       </div>
-    <div style="overflow-x:auto;">
+    <div style="overflow-x:auto;min-height:60vh">
       <table class="table">
         <thead>
             <th @click="sortBy( 'time')">
@@ -71,6 +71,7 @@ export default {
       isAsc: false,
     };
   },
+
   computed: {
     sortedItems() {
       const list = this.item.reports;
@@ -94,7 +95,10 @@ export default {
   mounted() {
     const reports = [];
     this.axios
-      .all([this.axios.get('/data.json'), this.axios.get('/drones.json')])
+      .all([this.axios.get('/data.json'), this.axios.get('/drones.json')],
+        {
+          headers: { crossDomain: true },
+        })
       .then(
         this.axios.spread((res1, res2) => {
           const allReports = res1.data.reports;
@@ -115,7 +119,7 @@ export default {
   },
 };
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 .error-block {
   td {
     text-align: center !important;
@@ -123,7 +127,10 @@ export default {
     opacity: 0.7;
   }
 }
-
+.drone-report-wrapper {
+  padding-bottom: 35px;
+  border-bottom:2px dashed $red;
+}
 .drone-report-heading {
   display: flex;
   align-items: center;
@@ -160,12 +167,14 @@ export default {
 .table {
   background-color: $background--color-white;
   box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
-
+  width:100%;
+  display:table;
+  border-collapse:collapse;
   thead{
     th {
-    padding-top: 20px;
-    padding-bottom: 8px;
+    padding:20px 14px 8px 14px;
     opacity: 0.7;
+    cursor:pointer;
     }
   }
 
@@ -180,6 +189,7 @@ export default {
     border-top: none !important;
     text-align: left;
     font-family: "Lato", "sans-serif";
+    display:table-cell;
   }
 
   tbody {
