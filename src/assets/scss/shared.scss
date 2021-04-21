@@ -19,23 +19,37 @@ $color--accent-moderate: $orange;
 $color--accent-light:$green;
 
 html,body {
-    height: 100%;
+    margin:0;
+    padding:0;
+    display: block;
 }
 body {
-    background-color: $background-color-darken !important;
-    font-size: 14px !important;
-    font-family: 'Roboto', sans-serif !important;
+    background-color: $background-color-darken;
+    font-size: 14px;
+    font-family: 'Roboto', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
     color: $black;
+    height: 100%;
 }
 
 ul{
     padding-left: 0;
     li {
         list-style-type: none;
+        a {
+           text-decoration: none;
+           &:hover {
+               text-decoration: underline;
+           }
+        }
     }
+}
+
+p {
+    margin-top: 0;
+    margin-bottom:15px
 }
 
 .button--action {
@@ -58,10 +72,11 @@ ul{
         text-decoration: none;
     }
 }
+
 .heading{
     background-color:$background--color-white;
     margin-bottom:35px;
-    h1 {
+    h1, p {
         font-size: 16px;
         font-weight: 700;
         text-align: left;
@@ -70,8 +85,28 @@ ul{
     }
 }
 
-// @media screen and (min-width:1200px) {
-//     .container {
-//         max-width: 1440px !important;
-//     }
-// }
+.lds-dual-ring {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+  }
+  .lds-dual-ring:after {
+    content: " ";
+    display: block;
+    width: 34px;
+    height: 34px;
+    margin: 8px;
+    border-radius: 50%;
+    border: 4px solid $black;
+    border-color: $purple transparent $purple transparent;
+    animation: lds-dual-ring 1.2s linear infinite;
+  }
+  @keyframes lds-dual-ring {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  

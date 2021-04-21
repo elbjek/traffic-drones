@@ -18,7 +18,8 @@
           </router-link>
       </div>
     <div style="overflow-x:auto;min-height:60vh">
-      <table class="table">
+      <Loader v-if="loading"/>
+      <table class="table" v-if="!loading">
         <thead>
             <th @click="sortBy( 'time')">
               Time
@@ -60,8 +61,13 @@
 </template>
 <script>
 /* eslint-disable no-nested-ternary */
+import Loader from '../components/Loader.vue';
+
 export default {
   name: 'Home',
+  components: {
+    Loader,
+  },
   data() {
     return {
       item: {},
@@ -69,9 +75,9 @@ export default {
       drones: [],
       sortKey: '',
       isAsc: false,
+      loading: true,
     };
   },
-
   computed: {
     sortedItems() {
       const list = this.item.reports;
@@ -86,12 +92,12 @@ export default {
     },
   },
   methods: {
-
     sortBy(key) {
       this.isAsc = this.sortKey === key ? !this.isAsc : false;
       this.sortKey = key;
     },
   },
+
   mounted() {
     const reports = [];
     this.axios
@@ -103,6 +109,7 @@ export default {
         this.axios.spread((res1, res2) => {
           const allReports = res1.data.reports;
           const allDrones = res2.data.drones;
+          this.loading = false;
           allDrones.forEach((drone) => {
             allReports.forEach((report) => {
               if (drone.id === Math.floor(this.$route.params.id) && drone.id === report.drone_id) {
@@ -143,6 +150,7 @@ export default {
     font-weight: 900;
     color: $text--color-accent;
     margin-bottom:0;
+    margin-top:0
   }
 
   .img-placeholder {

@@ -5,7 +5,11 @@
         <h1>Drone List</h1>
       </div>
     </div>
-    <div class='container'>
+    <div class='container drones-list-all'>
+      <Loader v-if="loading"/>
+      <div v-if="error" id="error-block">
+        Something went wrong!
+      </div>
       <div class='row'>
         <div
           v-for='drone in drones'
@@ -21,21 +25,39 @@
 
 <script>
 import SingleItem from '../components/SingleItem.vue';
+import Loader from '../components/Loader.vue';
 
 export default {
   name: 'Home',
   components: {
     SingleItem,
+    Loader,
   },
   data() {
     return {
       drones: [],
+      loading: true,
+      error: false,
     };
   },
   mounted() {
     this.axios.get('drones.json').then((response) => {
+      this.loading = false;
       this.drones = response.data.drones;
+      if (this.drones === undefined || this.drones === 0) {
+        this.error = true;
+      } else {
+        this.error = false;
+      }
+    }).catch(() => {
+      this.error = true;
     });
   },
 };
 </script>
+
+<style lang="scss">
+  .drones-list-all {
+    min-height:50vh
+  }
+</style>
