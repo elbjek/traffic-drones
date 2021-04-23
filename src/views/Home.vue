@@ -1,7 +1,7 @@
 <template>
   <div class='drone-list'>
     <Heading title="Drone Report"/>
-    <div class='container drones-list-all'>
+    <div class='drones-list-all container'>
       <Loader v-if="loading"/>
       <div v-if="error" id="error-block">
         Something went wrong!

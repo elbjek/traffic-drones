@@ -1,0 +1,23 @@
+body.ie-style {
+	.drone-list {
+		.col-sm-12 {
+			float:left;
+			width: 24.25%;
+			.card-titles,.card-data {         
+				width:auto;       
+				display:inline-block;
+			}
+			.card-data {
+				margin-left:30px;
+			}
+		}
+	}
+	.drone-report {
+		h1,h2,.img-placeholdr,button {
+			display: inline-block;
+		}
+		button {
+			float:right;
+		}
+	}
+}

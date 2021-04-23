@@ -1,60 +1,43 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Lato:wght@400;700;900&family=Roboto:wght@400;500;700;900&display=swap');
-$purple:#6308F7;
-$white: #FFFFFF;
-$white-darker:#F6F9FC;
-$green: #3CC13B;
-$red: #f03738;
-$orange: #f3bb1c;
-$pink: #ffa7d6;
-$black: #1E2833;
-
-$background-color-darken: $white-darker;
-$background--color-white: $white;
-$text--color-accent: $purple;
-
-$footer--color-accent:$pink;
-
-$color--accent-heavy: $red;
-$color--accent-moderate: $orange;
-$color--accent-light:$green;
-
-html,body {
-    margin:0;
-    padding:0;
-    display: block;
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  margin: 0;
+  padding: 0;
+  display: block;
 }
 body {
-    background-color: $background-color-darken;
-    font-size: 14px;
-    font-family: 'Roboto', sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: left;
-    color: $black;
-    height: 100%;
-    font-weight: normal;
-}
-
-ul{
+  background-color: $background-color-darken;
+  font-size: 14px;
+  font-family: "Roboto","Trebuchet MS", "Arial", sans-serif;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: left;
+  color: $black;
+  height: 100%;
+  font-weight: normal;
+  ul {
     padding-left: 0;
     li {
-        list-style-type: none;
+      list-style-type: none;
     }
-}
+  }
 
-a {
+  a {
     text-decoration: none;
     &:hover {
-        text-decoration: underline;
+      text-decoration: underline;
     }
- }
-
-p {
+  }
+  p {
     margin-top: 0;
-    margin-bottom:15px
+    margin-bottom: 15px;
+  }
 }
 
-.button--action {
+.button-action {
     padding: 12px 22px 12px 22px;
     display: block;
     border-radius: 8px;
@@ -63,7 +46,7 @@ p {
     text-align: center;
 }
 
-.button--action-purple {
+.button-action-purple {
     border: 2px solid $purple;
     background-color: $background--color-white;
     color: $text--color-accent;
